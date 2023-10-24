@@ -5,24 +5,28 @@ const fightersArray = [
         {
             name: 'Manny',
             expPoints: 0,
+            barPoints: 0,
             level: 1,
             dataName: 'manny',
         },
         {
             name: 'Anabella',
             expPoints: 0,
+            barPoints: 0,
             level: 1,
             dataName: 'anabella',
         },
         {
             name: 'Adan',
             expPoints: 0,
+            barPoints: 0,
             level: 1,
             dataName: 'adan',
         },
         {
             name: 'Nick',
             expPoints: 0,
+            barPoints: 0,
             level: 1,
             dataName: 'nick',
         },
@@ -41,6 +45,7 @@ function getFighters() {
             <div class="fighter">
                     <h3 class="fighter-level">Level ${fighter.level}</h3>
                     <div class="progress-bar-container">
+                        <div class="low-progress-bar-exp" data-name="${fighter.dataName}"></div>
                         <div class="fighter-progress-bar" id="fighter-progress-bar" data-name="${fighter.dataName}"></div>
                     </div>                
                     <img src="assets/cat.png">
@@ -73,19 +78,61 @@ function getFighters() {
 }
 getFighters()
 
+function checkLevel(){
+    let progressBars = document.querySelectorAll(".fighter-progress-bar")
+    
+    for (let i = 0; i < progressBars.length; i++) {
+        let progressBarPercentage = parseInt(progressBars[i].style.height)
+        if ( progressBarPercentage > 99 ){
+            for (let fighter of fightersArray){
+                if (progressBars[i].dataset.name === fighter.dataName){
+                    fighter.barPoints = fighter.barPoints - 100
+                    fighter.level = fighter.level + 1
+                    getFighters()
+                    getProgressBars()
+                }
+            }
+        }   
+    }
+}
+
+
+
 function getProgressBars(){
     let progressBars = document.querySelectorAll(".fighter-progress-bar")
+    let lowBarsExp = document.querySelectorAll(".low-progress-bar-exp")
     
     for (let i = 0; i < progressBars.length; i++) {
         for ( let fighter of fightersArray){
                 if (progressBars[i].dataset.name === fighter.dataName){
-                    progressBars[i].style.height = `${fighter.expPoints / 4}%`
-                    if (fighter.expPoints > 0){
+                    
+                    progressBars[i].style.height = `${fighter.barPoints}%`
+                    if (fighter.expPoints > 0 && fighter.barPoints > 10){
                         progressBars[i].textContent = `${fighter.expPoints} EXP`
+                        progressBars[i].style.marginTop = "auto"
+                    } else if (fighter.barPoints < 10){
+                        progressBars[i].textContent = ""
+                        progressBars[i].style.marginTop = ".5em"
+                    }
+                    
+                    if (fighter.barPoints < 10){
+                        for ( let bar of lowBarsExp){
+                            if (progressBars[i].dataset.name === bar.dataset.name){
+                                bar.textContent = `${fighter.expPoints} EXP`
+                            }
+                        }
+                    } else if (fighter.barPoints > 10){
+                        for ( let bar of lowBarsExp){
+                            if (progressBars[i].dataset.name === bar.dataset.name){
+                                bar.textContent = ""
+                            }
+                        }
                     }
                 }
         }   
     }
+    
+    checkLevel()
 }
 getProgressBars()
 
@@ -97,10 +144,13 @@ document.addEventListener("click", function(e){
         for (let fighter of fightersArray){
             if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
                 fighter.expPoints = fighter.expPoints + 50
+                fighter.barPoints = fighter.barPoints + 12.5
             } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
                 fighter.expPoints = fighter.expPoints + 60
+                fighter.barPoints = fighter.barPoints + 15
             } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
                 fighter.expPoints = fighter.expPoints + 75
+                fighter.barPoints = fighter.barPoints + 18.75
             }        
         }  
         getProgressBars()  

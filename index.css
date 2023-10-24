@@ -33,7 +33,6 @@ h1 {
     margin: 1em 0;
 }
 
-
 .progress-bar-container {
     height: 40vh;
     display: flex;
@@ -50,6 +49,12 @@ h1 {
     color: white;
     text-align: center;
     padding-top: .4em;
+}
+
+.low-progress-bar-exp {
+    text-align: center;
+    margin-top: auto;
+    font-weight: 500;
 }
 
 img {
