@@ -83,27 +83,28 @@ function checkLevel(){
     
     for (let i = 0; i < progressBars.length; i++) {
         let progressBarPercentage = parseInt(progressBars[i].style.height)
-        if ( progressBarPercentage > 99 ){
+        if ( progressBarPercentage >= 100 ){
             for (let fighter of fightersArray){
                 if (progressBars[i].dataset.name === fighter.dataName){
                     fighter.barPoints = fighter.barPoints - 100
                     fighter.level = fighter.level + 1
+                    console.log(fighter.barPoints)
                     getFighters()
                     getProgressBars()
                 }
             }
         }   
         
-        if ( progressBarPercentage < 1 ){
-            for (let fighter of fightersArray){
-                if (progressBars[i].dataset.name === fighter.dataName && fighter.level > 1){
-                    fighter.barPoints = fighter.barPoints + 100
-                    fighter.level = fighter.level - 1
-                    getFighters()
-                    getProgressBars()
+        for (let fighter of fightersArray){
+            if (fighter.barPoints < 0 && fighter.level > 1){
+                fighter.barPoints = fighter.barPoints + 100
+                fighter.level = fighter.level - 1
+                console.log(fighter.barPoints)
+                getFighters()
+                getProgressBars()
                 }
             }
-        }   
+           
     }
 }
 
