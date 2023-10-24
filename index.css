@@ -102,3 +102,10 @@ img {
     margin-left: auto;
     background-color: #7d7c7c;
 }
+
+
+.disabled {
+  pointer-events: none;
+  background-color: #cccccc;
+  box-shadow: none;
+}

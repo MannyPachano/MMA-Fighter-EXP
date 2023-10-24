@@ -136,22 +136,148 @@ function getProgressBars(){
 }
 getProgressBars()
 
+
+// function disableNegBtn(){
+//     const negBtns = document.getElementsByClassName('toggle-btn-neg')
+
+//         for (let btn of negBtns){
+//             console.log(`${btn.dataset.name} datasetname`)
+           
+//                 if (fightersArray.filter(`${btn.dataset.name}`) && fighter.barPoints == 0){
+//                     btn.classList.add("disabled")
+//                 }
+//                 }
+//             }
+         
+    
+// }
+// disableNegBtn()
+
 document.addEventListener("click", function(e){
     if (e.target.dataset){
         let fighterName = e.target.dataset.name
         let elementId = e.target.id
         
         for (let fighter of fightersArray){
-            if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
-                fighter.expPoints = fighter.expPoints + 50
-                fighter.barPoints = fighter.barPoints + 12.5
-            } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
-                fighter.expPoints = fighter.expPoints + 60
-                fighter.barPoints = fighter.barPoints + 15
-            } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
-                fighter.expPoints = fighter.expPoints + 75
-                fighter.barPoints = fighter.barPoints + 18.75
-            }        
+            
+            if (fighter.level == 1){
+            
+                    if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
+                        fighter.expPoints = fighter.expPoints + 20
+                        fighter.barPoints = fighter.barPoints + 20
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 25
+                        fighter.barPoints = fighter.barPoints + 25
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 30
+                        fighter.barPoints = fighter.barPoints + 30
+                    } else if (fighterName === fighter.dataName && (elementId === 'boxing-btn-neg' || elementId === 'jiu-jitsu-btn-neg')){
+                        fighter.expPoints = fighter.expPoints - 20
+                        fighter.barPoints = fighter.barPoints - 20
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 25
+                        fighter.barPoints = fighter.barPoints - 25
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 30
+                        fighter.barPoints = fighter.barPoints - 30
+                    } 
+            }
+            
+            if (fighter.level == 2){
+            
+                    if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
+                        fighter.expPoints = fighter.expPoints + 20
+                        fighter.barPoints = fighter.barPoints + 13.33
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 25
+                        fighter.barPoints = fighter.barPoints + 16.67
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 30
+                        fighter.barPoints = fighter.barPoints + 20
+                    } else if (fighterName === fighter.dataName && (elementId === 'boxing-btn-neg' || elementId === 'jiu-jitsu-btn-neg')){
+                        fighter.expPoints = fighter.expPoints - 20
+                        fighter.barPoints = fighter.barPoints - 13.33
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 25
+                        fighter.barPoints = fighter.barPoints - 16.67
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 30
+                        fighter.barPoints = fighter.barPoints - 20
+                    } 
+            }
+            
+            if (fighter.level == 3){
+            
+                    if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
+                        fighter.expPoints = fighter.expPoints + 20
+                        fighter.barPoints = fighter.barPoints + 6.67
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 25
+                        fighter.barPoints = fighter.barPoints + 8.33
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 30
+                        fighter.barPoints = fighter.barPoints + 10
+                    } else if (fighterName === fighter.dataName && (elementId === 'boxing-btn-neg' || elementId === 'jiu-jitsu-btn-neg')){
+                        fighter.expPoints = fighter.expPoints - 20
+                        fighter.barPoints = fighter.barPoints - 6.67
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 25
+                        fighter.barPoints = fighter.barPoints - 8.33
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 30
+                        fighter.barPoints = fighter.barPoints - 10
+                    } 
+            }
+            
+            if (fighter.level == 4){
+            
+                    if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
+                        fighter.expPoints = fighter.expPoints + 20
+                        fighter.barPoints = fighter.barPoints + 4.44
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 25
+                        fighter.barPoints = fighter.barPoints + 5.56
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 30
+                        fighter.barPoints = fighter.barPoints + 6.67
+                    } else if (fighterName === fighter.dataName && (elementId === 'boxing-btn-neg' || elementId === 'jiu-jitsu-btn-neg')){
+                        fighter.expPoints = fighter.expPoints - 20
+                        fighter.barPoints = fighter.barPoints - 4.44
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 25
+                        fighter.barPoints = fighter.barPoints - 5.56
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 30
+                        fighter.barPoints = fighter.barPoints - 6.67
+                    } 
+            }
+            
+            if (fighter.level >= 5){
+            
+                    if (fighterName === fighter.dataName && (elementId === 'boxing-btn-pos' || elementId === 'jiu-jitsu-btn-pos')){
+                        fighter.expPoints = fighter.expPoints + 20
+                        fighter.barPoints = fighter.barPoints + 3.33
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 25
+                        fighter.barPoints = fighter.barPoints + 4.16
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-pos'){
+                        fighter.expPoints = fighter.expPoints + 30
+                        fighter.barPoints = fighter.barPoints + 5
+                    } else if (fighterName === fighter.dataName && (elementId === 'boxing-btn-neg' || elementId === 'jiu-jitsu-btn-neg')){
+                        fighter.expPoints = fighter.expPoints - 20
+                        fighter.barPoints = fighter.barPoints - 3.33
+                    } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 25
+                        fighter.barPoints = fighter.barPoints - 4.16
+                    } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
+                        fighter.expPoints = fighter.expPoints - 30
+                        fighter.barPoints = fighter.barPoints - 5
+                    } 
+            }
+            
+            if (fighter.expPoints < 0 ){
+                fighter.expPoints = 0
+            }                   
         }  
         getProgressBars()  
     }
