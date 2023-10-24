@@ -280,5 +280,6 @@ document.addEventListener("click", function(e){
             }                   
         }  
         getProgressBars()  
+        e.preventDefault()
     }
 })
