@@ -133,25 +133,29 @@ function getProgressBars(){
     }
     
     checkLevel()
+    toggleNegBtn()
 }
 getProgressBars()
 
 
-// function disableNegBtn(){
-//     const negBtns = document.getElementsByClassName('toggle-btn-neg')
+function toggleNegBtn(){
+    const negBtns = document.getElementsByClassName('toggle-btn-neg')    
 
-//         for (let btn of negBtns){
-//             console.log(`${btn.dataset.name} datasetname`)
-           
-//                 if (fightersArray.filter(`${btn.dataset.name}`) && fighter.barPoints == 0){
-//                     btn.classList.add("disabled")
-//                 }
-//                 }
-//             }
-         
-    
-// }
-// disableNegBtn()
+        for (let btn of negBtns){
+            
+            for (let fighter of fightersArray){
+                if (btn.dataset.name === fighter.dataName && fighter.barPoints <= 0){
+                    btn.classList.add('disabled')
+                } 
+                
+                if (btn.dataset.name === fighter.dataName && fighter.barPoints > 0){
+                    btn.classList.remove('disabled')
+                    
+                }
+            }
+        } 
+}
+toggleNegBtn()
 
 document.addEventListener("click", function(e){
     if (e.target.dataset){
