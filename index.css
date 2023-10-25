@@ -163,7 +163,9 @@ h1 {
   top: 2px;
 }
 
-.disabled:focus {
+.disabled:focus,
+.disabled:active,
+.disabled:hover {
     outline: none;
     box-shadow: none;
 }
