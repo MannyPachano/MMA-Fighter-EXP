@@ -89,7 +89,7 @@ h1 {
     border-radius: 8px;
     font-size: 20px;
     width: 60%;
-    box-shadow:  0px 4px 8px 0px #5e1d28;
+    box-shadow: inset 0px 2px 6px 0px #5e1d28;
 }
 
 .toggle-btn-container {
