@@ -44,7 +44,7 @@ h1 {
     height: 25vh;
     display: flex;
     flex-direction: column;
-    margin: 0 2em;
+    margin: 0;
     background-color: #e3e1e1;
     border-radius: 4px 4px 0 0;
     box-shadow: inset 0px 4px 8px 0px #5e1d28;
@@ -72,7 +72,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     gap: 1em;
-    margin: .5em 0;
+    margin: 1em 0;
 }
 
 .fighter-img {
