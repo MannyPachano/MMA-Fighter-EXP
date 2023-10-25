@@ -165,4 +165,5 @@ h1 {
 
 .disabled:focus {
     outline: none;
+    box-shadow: none;
 }
