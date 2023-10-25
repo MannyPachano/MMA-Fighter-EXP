@@ -13,6 +13,7 @@ h1,
 
 h1 {
     margin-bottom: 0;
+    font-size: 1.2rem;
 }
 
 
@@ -57,9 +58,17 @@ h1 {
     font-weight: 500;
 }
 
-img {
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    margin: .5em 0;
+}
+
+.fighter-img {
     width: 5em;
-    margin: .5em auto;
 }
 
 
@@ -70,7 +79,7 @@ img {
     padding: 1rem;
     border-radius: 8px;
     font-size: 20px;
-    margin-bottom: 1rem;
+    width: 60%;
 }
 
 .toggle-btn-container {
@@ -94,30 +103,55 @@ img {
     border-radius: 8px;
     font-family: 'Rubik', sans-serif;
     border: none;
-    box-shadow: 0 4px 8px #403f3f;
     color: white;
     font-size: 30px; 
     text-align: center;
-}
-
-.toggle-btn-plus,
-.toggle-btn-neg {
     cursor: pointer;
 }
 
 .toggle-btn-plus {
     margin-left: 1rem;
     background-color: #119c13;
-}
+    box-shadow: 0 4px 8px #013002;
+    }
+    
+.toggle-btn-plus:hover {
+    box-shadow: 0 8px 12px #013002;
+    position: relative;
+    bottom: 2px;
+    }
 
 .toggle-btn-neg {
     margin-left: auto;
     background-color: #7d7c7c;
+    box-shadow: 0 4px 8px #403f3f;
 }
+
+.toggle-btn-neg:hover {
+    box-shadow: 0 8px 12px #403f3f;
+    position: relative;
+    bottom: 2px;
+    }
+
+.toggle-btn-plus:active {
+    box-shadow: 0 2px 4px #013002;
+    position: relative;
+    outline: none;
+    top: 2px;
+    }
+    
+.toggle-btn-neg:active {
+    box-shadow: 0 2px 4px #403f3f;
+    position: relative;
+    outline: none;
+    top: 2px;
+    }
 
 
 .disabled {
   pointer-events: none;
   background-color: #cccccc;
   box-shadow: none;
+  position: relative;
+  top: 2px;
 }

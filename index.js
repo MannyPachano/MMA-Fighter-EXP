@@ -63,8 +63,10 @@ function getFighters() {
                         <div class="low-progress-bar-exp" data-name="${fighter.dataName}"></div>
                         <div class="fighter-progress-bar" id="fighter-progress-bar" data-name="${fighter.dataName}"></div>
                     </div>                
-                    <img src="assets/cat.png">
-                    <div class="fighter-name" id="fighter-name">${fighter.name}</div>
+                    <div class="title-container">
+                        <div class="fighter-name" id="fighter-name">${fighter.name}</div>
+                        <img src="assets/cat.png" class="fighter-img">
+                    </div>
                     <div class="toggle-btn-container">
                         <div class="class-container">
                             <div class="class-name">Boxing</div>
@@ -266,11 +268,42 @@ function toggleNegBtn(){
         for (let btn of negBtns){
             
             for (let fighter of fightersArray){
-                if (btn.dataset.name === fighter.dataName && fighter.barPoints <= 0){
+                if (btn.dataset.name === fighter.dataName && fighter.barPoints <= 0 && fighter.level === 1){
                     btn.classList.add('disabled')
-                } 
+                }
                 
-                if (btn.dataset.name === fighter.dataName && fighter.barPoints > 0){
+                if (fighter.classesBoxing === 0 && btn.id === 'boxing-btn-neg' && btn.dataset.name === fighter.dataName){
+                    btn.classList.add('disabled')                              /*come here to fix*/
+                }
+                
+                if (btn.dataset.name === fighter.dataName && btn.id === 'boxing-btn-neg' && fighter.classesBoxing > 0){
+                    btn.classList.remove('disabled')
+                    
+                }
+                
+                if (fighter.classesMuayThai === 0 && btn.id === 'muay-thai-btn-neg' && btn.dataset.name === fighter.dataName){
+                    btn.classList.add('disabled')                              /*come here to fix*/
+                }
+                
+                if (btn.dataset.name === fighter.dataName && btn.id === 'muay-thai-btn-neg' && fighter.classesMuayThai > 0){
+                    btn.classList.remove('disabled')
+                    
+                }
+                
+                if (fighter.classesWrestling === 0 && btn.id === 'wrestling-btn-neg' && btn.dataset.name === fighter.dataName){
+                    btn.classList.add('disabled')                              /*come here to fix*/
+                }
+                
+                if (btn.dataset.name === fighter.dataName && btn.id === 'wrestling-btn-neg' && fighter.classesWrestling > 0){
+                    btn.classList.remove('disabled')
+                    
+                }
+                
+                if (fighter.classesJiuJitsu === 0 && btn.id === 'jiu-jitsu-btn-neg' && btn.dataset.name === fighter.dataName){
+                    btn.classList.add('disabled')                              /*come here to fix*/
+                }
+                
+                if (btn.dataset.name === fighter.dataName && btn.id === 'jiu-jitsu-btn-neg' && fighter.classesJiuJitsu > 0){
                     btn.classList.remove('disabled')
                     
                 }
@@ -361,6 +394,10 @@ document.addEventListener("click", function(e){
                             fighter.barPoints = fighter.barPoints - (20/(divisibleNum*4))
                         }
                         fighter.classesBoxing = fighter.classesBoxing - 1
+                        if (fighter.classesBoxing < 0){
+                                fighter.classesBoxing = 0
+                                
+                            }
                     } else if (fighterName === fighter.dataName && elementId === 'muay-thai-btn-neg'){
                         fighter.expPoints = fighter.expPoints - 25
                         if (fighter.level == 1){
@@ -375,6 +412,10 @@ document.addEventListener("click", function(e){
                             fighter.barPoints = fighter.barPoints - (25/(divisibleNum*4))
                         }
                         fighter.classesMuayThai = fighter.classesMuayThai - 1
+                        if (fighter.classesMuayThai < 0){
+                                fighter.classesMuayThai = 0
+                                
+                            }
                     } else if (fighterName === fighter.dataName && elementId === 'wrestling-btn-neg'){
                         fighter.expPoints = fighter.expPoints - 30
                         if (fighter.level == 1){
@@ -389,6 +430,10 @@ document.addEventListener("click", function(e){
                             fighter.barPoints = fighter.barPoints - (30/(divisibleNum*4))
                         }
                         fighter.classesWrestling = fighter.classesWrestling - 1
+                        if (fighter.classesWrestling < 0){
+                                fighter.classesWrestling = 0
+                                
+                            }
                     } else if (fighterName === fighter.dataName && elementId === 'jiu-jitsu-btn-neg'){
                         fighter.expPoints = fighter.expPoints - 20
                         if (fighter.level == 1){
@@ -403,6 +448,10 @@ document.addEventListener("click", function(e){
                             fighter.barPoints = fighter.barPoints - (20/(divisibleNum*4))
                         }
                         fighter.classesJiuJitsu = fighter.classesJiuJitsu - 1
+                        if (fighter.classesJiuJitsu < 0){
+                                fighter.classesJiuJitsu = 0
+                                
+                            }
                     }
             
             if (fighter.expPoints < 0 ){
