@@ -169,8 +169,7 @@ function getProgressBars(){
     for (let i = 0; i < progressBars.length; i++) {
         for ( let fighter of fightersArray){
                 if (progressBars[i].dataset.name === fighter.dataName){
-                    
-                    // progressBars[i].style.height = `${fighter.barPoints}%`
+
                     if (fighter.expPoints < 100){
                         progressBars[i].style.height = `${fighter.expPoints}%`
                         fighter.level = 1
@@ -183,10 +182,13 @@ function getProgressBars(){
                     } else if (fighter.expPoints >= 550 && fighter.expPoints < 1000 ){
                         progressBars[i].style.height = `${(fighter.expPoints - 550 )/ 4.5}%`
                         fighter.level = 4
-                    } else if (fighter.expPoints >= 1000 && fighter.expPoints < 1900){
+                    } else if (fighter.expPoints >= 1000 && fighter.expPoints < 1600){
                         progressBars[i].style.height = `${(fighter.expPoints - 1000 )/ 6}%`
                         fighter.level = 5
-                    } 
+                    } else if (fighter.expPoints >= 1600){
+                        fighter.level = 6 + Math.floor((fighter.expPoints-1600)/600)
+                        progressBars[i].style.height = `${( ( (fighter.expPoints - 1600) / 600) - Math.floor( (fighter.expPoints-1600) / 600) ) * 100}%`
+                    }
                     
                     
                     
