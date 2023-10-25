@@ -1,3 +1,5 @@
+
+
 html, body {
     margin: 0 1em;
     padding: 0;
@@ -55,7 +57,6 @@ h1 {
     color: white;
     text-align: center;
     padding-top: .4em;
-    border-bottom: solid 2px #6b2330;
 }
 
 .low-progress-bar-exp {

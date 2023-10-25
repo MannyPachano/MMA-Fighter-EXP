@@ -2,7 +2,6 @@ const fightersArray = [
     {
         name: 'Manny',
         expPoints: 0,
-        barPoints: 0,
         level: 1,
         classesBoxing: 0,
         classesMuayThai: 0,
@@ -13,7 +12,6 @@ const fightersArray = [
     {
         name: 'Anabella',
         expPoints: 0,
-        barPoints: 0,
         level: 1,
         classesBoxing: 0,
         classesMuayThai: 0,
@@ -24,7 +22,6 @@ const fightersArray = [
     {
         name: 'Adan',
         expPoints: 0,
-        barPoints: 0,
         level: 1,
         classesBoxing: 0,
         classesMuayThai: 0,
@@ -35,7 +32,6 @@ const fightersArray = [
     {
         name: 'Nick',
         expPoints: 0,
-        barPoints: 0,
         level: 1,
         classesBoxing: 0,
         classesMuayThai: 0,

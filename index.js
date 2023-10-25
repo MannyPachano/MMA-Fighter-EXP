@@ -5,14 +5,15 @@ import fightersArray from '/data.js'
     
     
 const containerMain = document.getElementById('container-main')
+let html = ""
 
+// Get Initial Html
 function getFighters() {
-    let html = ""
     
     for (let fighter of fightersArray) {
         html += `
             <div class="fighter">
-                    <h3 class="fighter-level">Level ${fighter.level}</h3>
+                    <h3 class="fighter-level" data-name="${fighter.dataName}">Level ${fighter.level}</h3>
                     <div class="progress-bar-container">
                         <div class="low-progress-bar-exp" data-name="${fighter.dataName}"></div>
                         <div class="fighter-progress-bar" id="fighter-progress-bar" data-name="${fighter.dataName}"></div>
@@ -61,6 +62,7 @@ function getFighters() {
 }
 getFighters()
 
+// Get number of classes completed for each fighting style
 function getClassNumbers(){
     let htmlBoxing = ""
     let htmlMuayThai = ""
@@ -144,38 +146,22 @@ function getClassNumbers(){
 }
 getClassNumbers()
 
+// Handle Level changes, ex: level 1, level 2, etc.
 function checkLevel(){
-    let progressBars = document.querySelectorAll(".fighter-progress-bar")
+    let levelHtmls = document.querySelectorAll(".fighter-level")
     
-    for (let i = 0; i < progressBars.length; i++) {
-        let progressBarPercentage = parseInt(progressBars[i].style.height)
-        if ( progressBarPercentage > 100 ){
-            for (let fighter of fightersArray){
-                if (progressBars[i].dataset.name === fighter.dataName){
-                    fighter.barPoints = fighter.barPoints - 100
-                    fighter.level = fighter.level + 1
-                    // console.log(fighter.barPoints)
-                    getFighters()
-                    getProgressBars()
-                }
+    for (let fighter of fightersArray){
+        for (let html of levelHtmls){
+            if (fighter.level >= 1 & fighter.dataName === html.dataset.name){
+                html.innerHTML = `Level ${fighter.level}`
             }
-        }   
-        
-        for (let fighter of fightersArray){
-            if (fighter.barPoints < 0 && fighter.level > 1){
-                fighter.barPoints = fighter.barPoints + 100
-                fighter.level = fighter.level - 1
-                // console.log(fighter.barPoints)
-                getFighters()
-                getProgressBars()
-                }
-            }
-           
-    }
+               
+        }
+    }  
 }
 
 
-
+// Handle progress bar heights
 function getProgressBars(){
     let progressBars = document.querySelectorAll(".fighter-progress-bar")
     let lowBarsExp = document.querySelectorAll(".low-progress-bar-exp")
@@ -184,22 +170,41 @@ function getProgressBars(){
         for ( let fighter of fightersArray){
                 if (progressBars[i].dataset.name === fighter.dataName){
                     
-                    progressBars[i].style.height = `${fighter.barPoints}%`
-                    if (fighter.expPoints > 0 && fighter.barPoints > 10){
+                    // progressBars[i].style.height = `${fighter.barPoints}%`
+                    if (fighter.expPoints < 100){
+                        progressBars[i].style.height = `${fighter.expPoints}%`
+                        fighter.level = 1
+                    } else if (fighter.expPoints >= 100 && fighter.expPoints < 250 ){
+                        progressBars[i].style.height = `${(fighter.expPoints - 100 )/ 1.5}%`
+                        fighter.level = 2 
+                    } else if (fighter.expPoints >= 250 && fighter.expPoints < 550 ){
+                        progressBars[i].style.height = `${(fighter.expPoints - 250 )/ 3}%`
+                        fighter.level = 3 
+                    } else if (fighter.expPoints >= 550 && fighter.expPoints < 1000 ){
+                        progressBars[i].style.height = `${(fighter.expPoints - 550 )/ 4.5}%`
+                        fighter.level = 4
+                    } else if (fighter.expPoints >= 1000 && fighter.expPoints < 1900){
+                        progressBars[i].style.height = `${(fighter.expPoints - 1000 )/ 6}%`
+                        fighter.level = 5
+                    } 
+                    
+                    
+                    
+                    if (parseInt(progressBars[i].style.height) > 15){
                         progressBars[i].textContent = `${fighter.expPoints} EXP`
                         progressBars[i].style.marginTop = "auto"
-                    } else if (fighter.barPoints < 10){
+                    } else {
                         progressBars[i].textContent = ""
                         progressBars[i].style.marginTop = ".5em"
                     }
                     
-                    if (fighter.barPoints < 10){
+                    if (parseInt(progressBars[i].style.height) < 15){
                         for ( let bar of lowBarsExp){
                             if (progressBars[i].dataset.name === bar.dataset.name){
                                 bar.textContent = `${fighter.expPoints} EXP`
                             }
                         }
-                    } else if (fighter.barPoints > 10){
+                    } else if (parseInt(progressBars[i].style.height) > 15){
                         for ( let bar of lowBarsExp){
                             if (progressBars[i].dataset.name === bar.dataset.name){
                                 bar.textContent = ""
@@ -209,13 +214,12 @@ function getProgressBars(){
                 }
         }   
     }
-    
     checkLevel()
     toggleNegBtn()
 }
 getProgressBars()
 
-
+// handle toggling of negative buttons, disable/enable
 function toggleNegBtn(){
     const negBtns = document.getElementsByClassName('toggle-btn-neg')    
 
@@ -266,6 +270,7 @@ function toggleNegBtn(){
 }
 toggleNegBtn()
 
+// handle button functionality
 document.addEventListener("click", function(e){
     if (e.target.dataset){
         let fighterName = e.target.dataset.name
