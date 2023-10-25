@@ -173,6 +173,12 @@ h1 {
     box-shadow: none;
 }
 
+@media (min-width: 448px){
+    .container {
+    grid-gap: 1em 6vw;
+    }
+}
+
 @media (min-width: 680px){
     .title-container {
         margin: 1em 0 .5em;
