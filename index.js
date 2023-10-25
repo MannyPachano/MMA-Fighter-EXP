@@ -40,7 +40,7 @@ function getFighters() {
                     </div>
                     <div class="toggle-btn-container">
                         <div class="class-container">
-                            <div class="class-name">Wrestling</div>
+                            <div class="class-name">MMA</div>
                             <div class="num-classes num-classes-wrestling" id="num-classes-wrestling" data-name="${fighter.dataName}"></div>
                         </div>
                         <button class="toggle-btn toggle-btn-neg" id="wrestling-btn-neg" data-name="${fighter.dataName}">-</button>
