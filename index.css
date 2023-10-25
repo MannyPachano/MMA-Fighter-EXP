@@ -75,7 +75,8 @@ h1 {
 }
 
 .fighter-img {
-    width: 5em;
+    max-width: 5em;
+    max-height: 5em;
 }
 
 

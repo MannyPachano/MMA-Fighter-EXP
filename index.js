@@ -20,7 +20,7 @@ function getFighters() {
                     </div>                
                     <div class="title-container">
                         <div class="fighter-name" id="fighter-name">${fighter.name}</div>
-                        <img src="assets/cat.png" class="fighter-img">
+                        <img src="assets/cat.png" class="fighter-img" id="fighter-img" data-name="${fighter.dataName}">
                     </div>
                     <div class="toggle-btn-container">
                         <div class="class-container">
@@ -165,6 +165,7 @@ function checkLevel(){
 function getProgressBars(){
     let progressBars = document.querySelectorAll(".fighter-progress-bar")
     let lowBarsExp = document.querySelectorAll(".low-progress-bar-exp")
+    const fighterImg = document.getElementsByClassName('fighter-img')
     
     for (let i = 0; i < progressBars.length; i++) {
         for ( let fighter of fightersArray){
@@ -173,9 +174,19 @@ function getProgressBars(){
                     if (fighter.expPoints < 100){
                         progressBars[i].style.height = `${fighter.expPoints}%`
                         fighter.level = 1
+                        for (let img of fighterImg){
+                            if (fighter.dataName === img.dataset.name){ 
+                                img.setAttribute('src', "/assets/cat.png") 
+                            }
+                        }
                     } else if (fighter.expPoints >= 100 && fighter.expPoints < 250 ){
                         progressBars[i].style.height = `${(fighter.expPoints - 100 )/ 1.5}%`
                         fighter.level = 2 
+                        for (let img of fighterImg){
+                            if (fighter.dataName === img.dataset.name){ 
+                                img.setAttribute('src', "/assets/lion-ninja.png") 
+                            }
+                        }
                     } else if (fighter.expPoints >= 250 && fighter.expPoints < 550 ){
                         progressBars[i].style.height = `${(fighter.expPoints - 250 )/ 3}%`
                         fighter.level = 3 
