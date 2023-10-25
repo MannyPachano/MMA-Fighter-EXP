@@ -34,7 +34,7 @@ h1 {
 }
 
 .progress-bar-container {
-    height: 35vh;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     margin: 0 3em;
@@ -80,6 +80,13 @@ img {
     margin: .5em 0 1em;
 }
 
+.num-classes {
+    margin-top: .2em;
+    color: #AC485A;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
 .toggle-btn {
     width: 2.5rem;
     max-width: 80px;
@@ -91,6 +98,11 @@ img {
     color: white;
     font-size: 30px; 
     text-align: center;
+}
+
+.toggle-btn-plus,
+.toggle-btn-neg {
+    cursor: pointer;
 }
 
 .toggle-btn-plus {
