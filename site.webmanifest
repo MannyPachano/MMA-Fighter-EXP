@@ -3,7 +3,8 @@
     "short_name": "Fighter Stats",
     "icons":
         [
-            {"src":"/assets/MMA-fighter-stats-icon","sizes":"591x591","type":"image/png"}
+            {"src":"/assets/MMA-fighter-stats-icon-192x192.jpg","sizes":"192x192","type":"image/jpg"},
+            {"src":"/assets/MMA-fighter-stats-icon.jpg","sizes":"591x591","type":"image/jpg"}
         ],
     "theme_color": "#AC485A",
     "background_color": "#FFFFFF",
