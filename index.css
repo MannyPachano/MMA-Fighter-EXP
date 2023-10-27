@@ -189,4 +189,10 @@ h1 {
     .title-container {
         margin: 2em 0 1em;
     }
+    .container {
+        margin-top: 3vh;        
+    }
+    h1 {
+        padding-bottom: 3vw;
+    }
 }
