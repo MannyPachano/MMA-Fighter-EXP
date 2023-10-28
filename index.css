@@ -10,6 +10,11 @@ html, body {
     user-select: none; /* Standard syntax */
 }
 
+@font-face {
+    src: url("sternbach-bold-italic.otf");
+    font-family: Sternbach;
+}
+
 h1,
 .fighter-level,
 .fighter-name {
