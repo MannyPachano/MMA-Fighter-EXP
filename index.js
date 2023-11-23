@@ -301,7 +301,7 @@ function getProgressBars(){
                             img.setAttribute('src', "/assets/cat.png") 
                         }
                     }
-                } else if (fighter.expPoints >= 100 && fighter.expPoints < 250 ){
+                } else if (fighter.expPoints < 250 ){
                     progressBars[i].style.height = `${(fighter.expPoints - 100 )/ 1.5}%`
                     fighter.level = 2 
                     for (let img of fighterImg){
@@ -309,16 +309,16 @@ function getProgressBars(){
                             img.setAttribute('src', "/assets/lion-ninja.png") 
                         }
                     }
-                } else if (fighter.expPoints >= 250 && fighter.expPoints < 550 ){
+                } else if (fighter.expPoints < 550 ){
                     progressBars[i].style.height = `${(fighter.expPoints - 250 )/ 3}%`
                     fighter.level = 3 
-                } else if (fighter.expPoints >= 550 && fighter.expPoints < 1000 ){
+                } else if (fighter.expPoints < 1000 ){
                     progressBars[i].style.height = `${(fighter.expPoints - 550 )/ 4.5}%`
                     fighter.level = 4
-                } else if (fighter.expPoints >= 1000 && fighter.expPoints < 1600){
+                } else if (fighter.expPoints < 1600){
                     progressBars[i].style.height = `${(fighter.expPoints - 1000 )/ 6}%`
                     fighter.level = 5
-                } else if (fighter.expPoints >= 1600){
+                } else {
                     fighter.level = 6 + Math.floor((fighter.expPoints-1600)/600)
                     progressBars[i].style.height = `${( ( (fighter.expPoints - 1600) / 600) - Math.floor( (fighter.expPoints-1600) / 600) ) * 100}%`
                 }
